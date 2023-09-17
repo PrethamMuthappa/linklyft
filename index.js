@@ -9,12 +9,16 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json());
 app.set("views",path.join(__dirname,"views"))
 app.set("view engine","ejs");
+const db=require('./config/db');
 
 const port=process.env.PORT;
+
 
 app.get('/',(req,res)=>{
     res.render('index')
 })
+
+db();
 
 app.get('/form',(req,res)=>{
     res.render('form')
