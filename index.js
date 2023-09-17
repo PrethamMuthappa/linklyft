@@ -16,16 +16,24 @@ const red=require('./routes/redirect')
 const port=process.env.PORT;
 
 
-app.get('/',(req,res)=>{
-    res.render('index')
-})
+async function main(){
+    try {
 
-db();
+        app.get('/',(req,res)=>{
+            res.render('index')
+        })
+        
+       await db();
+        
+        app.use('/',linkroute);
+        app.use('/',red)
+        
+        app.listen(port,()=>{
+            console.log("listining",port);
+        })
+    } catch (error) {
+        res.status(404).send('not connected')
+    }
+}
 
-
-app.use('/',linkroute);
-app.use('/',red)
-
-app.listen(port,()=>{
-    console.log("list",port);
-})
+main()
