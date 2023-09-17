@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const { version } = require('uuid');
-const{Schema,Model}=mongoose;
+const{Schema,model}=mongoose;
 
 const urllink=new Schema({
  LINKS:{
@@ -10,4 +10,6 @@ const urllink=new Schema({
  }
 },{versionKey:false})
 
-const links=new Model('userlinks',urllink)
+const links=new model('userlinks',urllink)
+
+module.exports=links;

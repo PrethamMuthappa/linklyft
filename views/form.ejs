@@ -10,7 +10,7 @@
 
     <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
         <!-- Form -->
-        <form id="myForm" class="mb-4">
+        <form action="/linkform" method="post" id="myForm" class="mb-4">
             <div class="mb-4">
                 <label for="inputField" class="block text-gray-700 font-semibold mb-2">Field:</label>
                 <input type="text" id="inputField" name="inputField" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300">
@@ -27,24 +27,7 @@
         </div>
     </div>
 
-    <script>
-        // Simulated server data
-        const serverData = {
-            fieldData: "Sample Data Received from Server"
-        };
-
-        // Handle form submission
-        document.getElementById("myForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            // Simulate data retrieval from the server
-            const data = serverData.fieldData;
-
-            // Display data in the section
-            document.getElementById("displayData").textContent = data;
-            document.getElementById("dataSection").classList.remove("hidden");
-        });
-    </script>
+  
 
     
 </body>

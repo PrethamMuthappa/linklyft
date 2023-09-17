@@ -10,6 +10,7 @@ app.use(express.json());
 app.set("views",path.join(__dirname,"views"))
 app.set("view engine","ejs");
 const db=require('./config/db');
+const linkroute=require('./routes/link')
 
 const port=process.env.PORT;
 
@@ -23,6 +24,8 @@ db();
 app.get('/form',(req,res)=>{
     res.render('form')
 })
+
+app.use('/',linkroute);
 
 app.listen(port,()=>{
     console.log("list",port);
