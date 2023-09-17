@@ -3,23 +3,21 @@ const url=require('../model/url')
 const express=require('express')
 const router=express.Router()
 
-router.get('/:li',async(req,res)=>{
+router.get('/:shortUrl', async (req, res) => {
     try {
-        const{li}=req.params;
-        const myshorturl= await url.findOne({shorturl:li})
-        if(myshorturl){
-         res.render('form',{
-            key:myshorturl
-         })
-        }
-        else{
-            return res.status(404).json('No URL Found')
-        }
+        const { shortUrl } = req.params;
+        const urls = await url.findOne({shorturl: shortUrl});
 
-
+        if (urls) {
+            res.redirect(urls.longurl);
+        } else {
+            console.log(`Short URL not found: ${shortUrl}`);
+            res.status(404).render('notfound');
+        }
     } catch (error) {
-        console.log(error)
+        console.error(`Error in redirection: ${error}`);
+        res.status(500).send('Internal Server Error');
     }
-})
+});
 
 module.exports=router

@@ -22,9 +22,6 @@ app.get('/',(req,res)=>{
 
 db();
 
-app.get('/form',(req,res)=>{
-    res.render('form')
-})
 
 app.use('/',linkroute);
 app.use('/',red)

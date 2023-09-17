@@ -11,14 +11,10 @@ const urllink=new Schema({
         type:String,
         require:true,
         unique:true
-     },
-     urlcode:{
-        type:String,
-        require:true,
-        unique:true
-     },
-     
+     }
     
+     
+   
 
 },{versionKey:false})
 

@@ -7,24 +7,20 @@ router.post('/linkform', async (req, res) => {
     try {
         const { long } = req.body;
 
-        const baseurl="http://localhost:3000"
+      //  const baseurl="http://localhost:3000"
         
-       if(!valid.isUri(baseurl)){
-        return res.status(404).send("wrong baseurl")
-       }
-
        const shortid=shortids.generate()
  
-     const urlcodes=baseurl+"/"+shortid
+     //const urlcodes="/"+shortid
 
         const link = await new url({
             longurl:long,
             shorturl:shortid,
-            urlcode:urlcodes
+           // urlcode:urlcodes
            
         });
         await link.save();
-       return  res.json({link})
+        res.render('result',{key:shortid})
 
     } catch (error) {
         console.error(error); 
