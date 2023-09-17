@@ -11,6 +11,7 @@ app.set("views",path.join(__dirname,"views"))
 app.set("view engine","ejs");
 const db=require('./config/db');
 const linkroute=require('./routes/link')
+const red=require('./routes/redirect')
 
 const port=process.env.PORT;
 
@@ -26,6 +27,7 @@ app.get('/form',(req,res)=>{
 })
 
 app.use('/',linkroute);
+app.use('/',red)
 
 app.listen(port,()=>{
     console.log("list",port);

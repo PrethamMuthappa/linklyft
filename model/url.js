@@ -1,13 +1,25 @@
 const mongoose=require('mongoose');
-const { version } = require('uuid');
 const{Schema,model}=mongoose;
 
 const urllink=new Schema({
- LINKS:{
-    type:String,
-    require:true,
-    unique:true
- }
+    longurl:{
+        type:String,
+        require:true,
+        unique:true
+     },
+     shorturl:{
+        type:String,
+        require:true,
+        unique:true
+     },
+     urlcode:{
+        type:String,
+        require:true,
+        unique:true
+     },
+     
+    
+
 },{versionKey:false})
 
 const links=new model('userlinks',urllink)
